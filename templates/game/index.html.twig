@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% endblock %}
+{% block title %}{{ game.name }}{% endblock %}
 
 {% block body %}
 <style>
@@ -14,7 +14,6 @@
 </style>
 
 <div class="container">
-  <h1>Liste des jeux vidéo</h1>
   <div class="row">
     <div class="col-12 mt-3" >
       <div class="card mb-3" style="width: 100%">
