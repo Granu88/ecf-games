@@ -37,6 +37,7 @@
           {% if game.review %}
             <b class="review mt-3">{{ game.review }}/20</b>
           {% else %}
+            <b class="review mt-3">Indisponible</b>
           {% endif %}
         </div>
       </div>
@@ -46,7 +47,11 @@
     <tbody>
       <tr>
         <th scope="col">Editeur(s)/Developpeur(s):</th>
-        <th scope="col">{{ game.editor.name}}</th>
+        <th scope="col">{% if game.editor == null or game.editor.id == 0 %}
+          <b>Inconnu</b>
+        {% else %}
+          <b>{{ game.editor.name }}</b>
+        {% endif %}</th>
       </tr>
       <tr>
         <th scope="col">Sortie:</th>
@@ -54,7 +59,11 @@
       </tr>
       <tr>
         <th scope="col">Classification:</th>
-        <th scope="col">{{ game.classification}}</th>
+        <th scope="col">{% if game.classification == null %}
+          <b>Inconnu</b>
+        {% else %}
+          <b>{{ game.classification }}</b>
+        {% endif %}</th>
       </tr>
       <tr>
         <th scope="col">Jeuxvideo.com:</th>
