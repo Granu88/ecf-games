@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des jeux{% endblock %}
+
+{% block body %}
+<style>
+
+.title {
+  color: black;
+}
+.review {
+  color: green;
+}
+</style>
+
+
+<div class="container">
+  <h1>Liste des jeux vidéo</h1>
+  <div class="row">
+    {% for game in games %}
+      <div class="col-12 mt-3" >
+        <div class="card mb-3" style="width: 100%">
+          <div class="row no-gutters">
+            <div class="col-md-4 px-3 py-3">
+              <img src="{{ game.cover }}" class="card-img " alt="cover : {{ game.name }}">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h2 class="card-title"><a class="title" href=" game/{{ game.id }}">{{ game.name }}</a></h2>
+                <p class="card-text">{{ game.description }}</p>
+                {% if game.date %}
+                <p class="card-text">Sortie : <b>{{ game.date|date('d/m/Y')}}</b></p>
+                {% else %}
+                  <p class="card-text">Sortie : <strong>Inconue</strong></p>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          <div class="card-footer text-center">
+            {% if game.review %}
+              <strong class="review mt-3">{{ game.review }}/20</strong>
+            {% else %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
